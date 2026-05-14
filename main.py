@@ -7,7 +7,7 @@ TITLE = "Starworld"
 VERSION = "0.1"
 
 pg.init()
-screen = pg.display.set_mode((1280, 720))
+screen = pg.display.set_mode((1280, 640))
 pg.display.set_caption(TITLE + " v" + VERSION)
 clock = pg.time.Clock()
 running = True
