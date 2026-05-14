@@ -10,6 +10,12 @@ class Player:
         self.facing = "RIGHT"
 
         #create a list of sprites, one facing each direction
+        self.sprites = {
+            "UP": pg.image.load("Sprites/Player/UP.png"),
+            "DOWN": pg.image.load("Sprites/Player/DOWN.png"),
+            "LEFT": pg.image.load("Sprites/Player/LEFT.png"),
+            "RIGHT": pg.image.load("Sprites/Player/RIGHT.png")
+        }
 
     def move(self, direction):
         if direction == "UP":
@@ -26,4 +32,4 @@ class Player:
             self.facing = "RIGHT"
     
     def render(self, screen):
-        pg.draw.rect(screen, "RED", (self.position[0], self.position[1], self.hitbox[0], self.hitbox[1]))
+        screen.blit(self.sprites[self.facing], (self.position[0], self.position[1]))

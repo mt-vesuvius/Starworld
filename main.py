@@ -35,7 +35,7 @@ while running:
                 player.move("RIGHT")
 
     # wipe screen
-    screen.fill("WHITE")
+    screen.fill("PURPLE")
 
     # RENDER GAME HERE
 
