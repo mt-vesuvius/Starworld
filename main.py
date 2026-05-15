@@ -15,6 +15,8 @@ running = True
 TILESIZE = 64
 
 player = Player(0, 0)
+tree1 = Tree(128, 256, 3)
+tree2 = Tree(512, 512, 4)
 
 while running:
 
@@ -40,8 +42,8 @@ while running:
     # RENDER GAME HERE
 
     player.render(screen)
-
-
+    tree1.render(screen)
+    tree2.render(screen)
 
     # render to screen
     pg.display.flip()
@@ -49,4 +51,3 @@ while running:
     clock.tick(60)
 
 pg.quit()
-

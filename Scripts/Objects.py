@@ -33,3 +33,20 @@ class Player:
     
     def render(self, screen):
         screen.blit(self.sprites[self.facing], (self.position[0], self.position[1]))
+
+class Tree:
+    def __init__(self, x, y, HEIGHT):
+        self.position = [x, y]
+        self.height = HEIGHT
+        self.hitbox = (64, TILESIZE * self.height)
+        self.sprites = {
+            "LOG": pg.image.load("Sprites/Tree/LOG.png"),
+            "LEAVES": pg.image.load("Sprites/Tree/LEAF.png")
+        }
+
+    def render(self, screen):
+        
+        for i in range(self.height):
+            screen.blit(self.sprites["LOG"], (self.position[0], self.position[1] - (i * TILESIZE)))
+        
+        screen.blit(self.sprites["LEAVES"], (self.position[0] - TILESIZE, self.position[1] - ((self.height * TILESIZE) + TILESIZE)))
