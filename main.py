@@ -41,9 +41,9 @@ while running:
 
     # RENDER GAME HERE
 
+    tree1.render(screen)    # we can make a tree spawner after we have collisions
+    tree2.render(screen)    # and also tilemaps / world generation so we don't have to manually spawn them
     player.render(screen)
-    tree1.render(screen)
-    tree2.render(screen)
 
     # render to screen
     pg.display.flip()

@@ -43,10 +43,14 @@ class Tree:
             "LOG": pg.image.load("Sprites/Tree/LOG.png"),
             "LEAVES": pg.image.load("Sprites/Tree/LEAF.png")
         }
+        self.LOGS = []  # storing logs to deconstruct the tree when player hits it
 
     def render(self, screen):
         
         for i in range(self.height):
-            screen.blit(self.sprites["LOG"], (self.position[0], self.position[1] - (i * TILESIZE)))
+            self.LOGS.append((self.sprites["LOG"], self.position[0], self.position[1] - (i * TILESIZE)))
+        
+        for i in range(len(self.LOGS)):
+            screen.blit(self.LOGS[i][0], (self.LOGS[i][1], self.LOGS[i][2]))
         
         screen.blit(self.sprites["LEAVES"], (self.position[0] - TILESIZE, self.position[1] - ((self.height * TILESIZE) + TILESIZE)))
