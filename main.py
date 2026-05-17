@@ -1,5 +1,8 @@
+# MADE WITH <3 BY STUDIO:LOTUS <3 <3 <3
+
 import pygame as pg
 from Scripts.Objects import *
+from Scripts.Functions import *
 
 
 # GAME INFO
@@ -22,10 +25,14 @@ while running:
 
     # GET PYGAME EVENTS
     for event in pg.event.get():
+
+        update_player_inputs(event)
+
         if event.type == pg.QUIT:
             running = False
 
         if event.type == pg.KEYDOWN:
+
             if event.key == pg.K_w:
                 player.move("UP")
             elif event.key == pg.K_s:
@@ -35,6 +42,13 @@ while running:
                 player.move("LEFT")
             elif event.key == pg.K_d:
                 player.move("RIGHT")
+
+    # game logic
+
+    tree1.check_if_logs_hit(player)
+    tree2.check_if_logs_hit(player)
+
+    #print(player.position)
 
     # wipe screen
     screen.fill("PURPLE")

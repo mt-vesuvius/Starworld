@@ -1,6 +1,10 @@
 import pygame as pg
+from Scripts.Functions import *
 
 TILESIZE = 64
+
+# Maybe we should make a basic object class and have everything else inherit
+# I mean it should be fine but keep that in mind for later
 
 class Player:
     def __init__(self, x, y):
@@ -33,6 +37,9 @@ class Player:
     
     def render(self, screen):
         screen.blit(self.sprites[self.facing], (self.position[0], self.position[1]))
+    
+    # Next up make a collision / physics function, just like general game functionality that needs to be run every frame
+
 
 class Tree:
     def __init__(self, x, y, HEIGHT):
@@ -43,7 +50,7 @@ class Tree:
             "LOG": pg.image.load("Sprites/Tree/LOG.png"),
             "LEAVES": pg.image.load("Sprites/Tree/LEAF.png")
         }
-        self.LOGS = []  # storing logs to deconstruct the tree when player hits it
+        self.LOGS = []  # storing logs to deconstruct the tree when player hits it (IF THIS WORKS LMAOO)
 
     def render(self, screen):
         
@@ -54,3 +61,8 @@ class Tree:
             screen.blit(self.LOGS[i][0], (self.LOGS[i][1], self.LOGS[i][2]))
         
         screen.blit(self.sprites["LEAVES"], (self.position[0] - TILESIZE, self.position[1] - ((self.height * TILESIZE) + TILESIZE)))
+    
+    def check_if_logs_hit(self, player):
+        for log in self.LOGS:
+            if in_range(player, log, 1) and current_player_event == "MOUSEBUTTONDOWN":  # check if player is in range - need to make function to check player input
+                self.LOGS.remove(log)
